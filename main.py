@@ -1,4 +1,4 @@
-from application import *
+from Application import *
 from Logger import *
 from pid import *
 import time
@@ -45,13 +45,13 @@ def main():
             time.sleep(0.020)
 
 
-    simulation = application("Over-Under Simulation", 800, 800)
+    simulation = Application("Over-Under Simulation", 800, 800)
 
     th1 = th.Thread(target=pid_correction)
     th1.start()
     while simulation.isRunning:
         simulation.tick()
-        time.sleep(simulation.wait_time)
+        time.sleep(simulation.delay)
     logger.terminate()
     th1.join()
     
