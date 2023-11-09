@@ -1,6 +1,6 @@
 from Application import *
 from Logger import *
-from pid import *
+from PID import *
 import time
 import math
 import threading as th
