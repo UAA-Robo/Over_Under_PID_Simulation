@@ -67,7 +67,7 @@ class Robot(Sprite):
     def __init__(self, height: int, width: int, x: int, y: int,\
                   r: float, v: float, id: int, file_name: str, name: str):
         """
-        @brief    Robot object child of Object. Simulated robot for the purpose of PID testing.
+        @brief    Robot object child of Sprite. Simulated robot for the purpose of PID testing.
         @param height    The height of the sprite to draw.
         @param width    The width of the sprite to draw.
         @param x    The x-position on the screen of the robot.
