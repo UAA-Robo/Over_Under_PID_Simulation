@@ -16,9 +16,16 @@ Where,
 - K_P is the Proportional Constant
 - K_D is the Derivative Constant
 
-***Status update 11/06/2023***
+***Status update 11/20/2023***
 <br>
-*Full left_speed/right_speed integration is incomplete. This will be finished alongside moving from constant, repetitive, error addition to constant, uniform, and random error entry.*
+*Left speed/Right speed integration complete. The PID adjusts the right and left wheels independently by overdriving them by an amount governed by*
+> Overdrive Amount = 7 * Feedback * w
+
+*Where,*
+- *w is the width of the robot (in pixels in the simulation)*
+
+*This overdrive amount is added and subtracted from the respective sides to adjust the angle of the robot's trajectory. Speed is kept constant by virtue of the PID acting on top of the base speed.*
+
 
 ## Setup
 In order to install all the dependencies needed for this application, run 
@@ -27,6 +34,5 @@ In order to install all the dependencies needed for this application, run
 ## Usage
 To run this program, run `python main.py` in this directory. 
 A window will be presented that represents a small (800x800) section of the virtual field for the simulated robot. Although it always stays on the window, its actual position can lie beyond the borders. The following keys have specific actions:
-* **Left Arrow** rotates the robot 5 degrees to the left.
-* **Right Arrow** rotates the robot 5 degrees to the right.
-* **Space Bar** pauses the simulation.
+* **Left Arrow** rotates the robot 2 degrees to the left.
+* **Right Arrow** rotates the robot 2 degrees to the right.

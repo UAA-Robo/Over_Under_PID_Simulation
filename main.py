@@ -1,6 +1,6 @@
 from Application import *
 from Logger import *
-from PID import *
+from pid import *
 import time
 import math
 import threading as th
@@ -40,7 +40,15 @@ def main():
             #                                                 simulation.pl.icebot.get_rotation())))
             logger.enter_data([pid.cross_track_error, distance_from_start, heading_offset])
             heading_correction = pid.correct_heading()
-            simulation.pl.icebot.set_rotation(simulation.pl.icebot.get_rotation() + math.degrees(heading_correction))
+            # simulation.pl.icebot.set_rotation(simulation.pl.icebot .get_rotation() + math.degrees(heading_correction))
+            change_in_angle = 7 * heading_correction * 64
+            print(change_in_angle)
+            if change_in_angle > 0:
+                simulation.pl.icebot.left_speed -= abs(change_in_angle)
+                simulation.pl.icebot.right_speed += abs(change_in_angle)
+            else:
+                simulation.pl.icebot.right_speed -= abs(change_in_angle)
+                simulation.pl.icebot.left_speed += abs(change_in_angle)
             simulation.pl.icebot.reset_distance()
             time.sleep(0.020)
 

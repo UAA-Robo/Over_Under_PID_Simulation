@@ -34,7 +34,7 @@ class Application:
             self.game_tick = 0
         if not self.isRunning: return
         if self.window_tick == 1 and not self.isPaused:
-            self.wd.update(self.pl.objects_list)
+            self.wd.update(self.pl.objects_list, self.pl.text_list)
             self.window_tick = 0
 
     def process_events(self):
@@ -48,9 +48,9 @@ class Application:
                 return
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
-            self.pl.icebot.set_rotation(self.pl.icebot.get_rotation() + 5.0)
+            self.pl.icebot.set_rotation(self.pl.icebot.get_rotation() + 2.0)
         if keys[pygame.K_RIGHT]:
-            self.pl.icebot.set_rotation(self.pl.icebot.get_rotation() - 5.0)
+            self.pl.icebot.set_rotation(self.pl.icebot.get_rotation() - 2.0)
         if keys[pygame.K_SPACE]:
             if self.isPaused: self.isPaused = False
             else: self.isPaused = True

@@ -20,15 +20,19 @@ class ProgramLogic:
         @param time_passed    The time passed since last execution.
         """
         self.icebot.move()
+        self.text_list.clear()
+        self.speedometer.text = "Speed: " + str(self.icebot.moved_distance / time_passed)
+        self.text_list.append(self.speedometer)
 
         self.objects_list.update()
-       
+
     def setup(self):
         """
         @brief    Function to setup specific programlogic class components for this program, 
                   like objects.
         """
         self.objects_list = pygame.sprite.Group()
+        self.text_list = []
 
         # Background Object
         self.background = obj.Sprite(800, 800, 400, 400, 0.0, -1, "background.png", "Background")
@@ -41,6 +45,9 @@ class ProgramLogic:
         # Vertical Line Object
         self.vertical_line = obj.Sprite(800, 2, 400, 400, 0.0, 0, "Equilibrium.png", "Vertical Line")
         self.objects_list.add(self.vertical_line)
+
+        self.speedometer = obj.Text("", 50, 50)
+        self.text_list.append(self.speedometer)
 
 
 
